@@ -1,0 +1,842 @@
+/* ============ GLOBAL STYLES ============ */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  color: #e0e0e0;
+}
+
+.App {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+
+/* ============ HEADER ============ */
+
+.App-header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(90deg, #0f3460 0%, #533483 100%);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.App-header .subtitle {
+  margin: 10px 0 0;
+  color: #b0b0b0;
+  font-size: 1.1rem;
+}
+
+/* ============ NAVIGATION ============ */
+
+.App-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+.App-nav button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.1);
+  color: #e0e0e0;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.App-nav button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.App-nav button.active {
+  background: #533483;
+  color: white;
+}
+
+/* ============ MAIN CONTENT ============ */
+
+.App-main {
+  min-height: 60vh;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* ============ BUTTONS ============ */
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #533483;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #6b4a9e;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: #e0e0e0;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(255,255,255,0.2);
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: #34ce57;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #e4606d;
+}
+
+.btn-add {
+  background: #17a2b8;
+  color: white;
+}
+
+.btn-add:hover {
+  background: #20c3d8;
+}
+
+.btn-icon {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-small {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+/* ============ EMPTY STATE ============ */
+
+.empty-state {
+  text-align: center;
+  padding: 80px 40px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  border: 2px dashed rgba(255,255,255,0.1);
+}
+
+.empty-state h2 {
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #666;
+}
+
+/* ============ WORKFLOW LIST ============ */
+
+.workflow-list h2 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.workflow-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s;
+}
+
+.workflow-card:hover {
+  border-color: #533483;
+  transform: translateY(-2px);
+}
+
+.workflow-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.workflow-card-header h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.step-count {
+  background: rgba(83, 52, 131, 0.5);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.workflow-description {
+  color: #999;
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+.workflow-meta {
+  color: #666;
+  margin: 10px 0;
+}
+
+.recent-executions {
+  margin: 15px 0;
+  padding: 10px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.recent-executions h4 {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.execution-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  margin: 4px 0;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.execution-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.workflow-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+/* ============ WORKFLOW BUILDER ============ */
+
+.workflow-builder {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 25px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.builder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.builder-header h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.builder-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.workflow-form {
+  margin-bottom: 30px;
+}
+
+/* ============ FORM ELEMENTS ============ */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  background: rgba(0,0,0,0.3);
+  color: #e0e0e0;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #533483;
+}
+
+.form-group textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.form-section h4 {
+  margin: 0 0 5px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.section-description {
+  margin: 0 0 15px;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.help-text {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* ============ STEPS SECTION ============ */
+
+.steps-section {
+  margin-top: 30px;
+}
+
+.steps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.steps-header h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.empty-steps {
+  text-align: center;
+  padding: 40px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  border: 2px dashed rgba(255,255,255,0.1);
+  color: #888;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ============ STEP EDITOR ============ */
+
+.step-editor {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.step-editor.expanded {
+  border-color: #533483;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.step-header:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.step-order {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-badge {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #533483;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+}
+
+.order-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.order-controls button {
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 3px;
+  color: #e0e0e0;
+  cursor: pointer;
+}
+
+.order-controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.step-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-title strong {
+  color: #fff;
+}
+
+.step-model {
+  font-size: 0.85rem;
+  color: #888;
+  background: rgba(255,255,255,0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.step-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.step-content {
+  padding: 20px;
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ============ EXECUTION VIEWER ============ */
+
+.execution-viewer {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 25px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.viewer-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.viewer-header h2 {
+  margin: 0;
+  color: #fff;
+  flex: 1;
+}
+
+.execution-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.summary-item label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.summary-item span {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.summary-item.error span {
+  color: #dc3545;
+}
+
+.auto-refresh-toggle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+}
+
+.auto-refresh-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b0b0b0;
+  cursor: pointer;
+}
+
+/* ============ STEP EXECUTION CARDS ============ */
+
+.step-executions h3 {
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.step-execution-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid #888;
+  overflow: hidden;
+}
+
+.step-execution-card.completed {
+  border-left-color: #28a745;
+}
+
+.step-execution-card.running {
+  border-left-color: #17a2b8;
+}
+
+.step-execution-card.failed {
+  border-left-color: #dc3545;
+}
+
+.step-execution-card.retrying {
+  border-left-color: #fd7e14;
+}
+
+.step-exec-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.step-exec-header:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.step-exec-order {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.step-exec-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-exec-info strong {
+  color: #fff;
+}
+
+.step-exec-model {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.step-exec-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.attempt-badge {
+  font-size: 0.8rem;
+  color: #fd7e14;
+}
+
+.step-exec-details {
+  padding: 20px;
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.detail-section {
+  margin-bottom: 20px;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section h4 {
+  margin: 0 0 10px;
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.detail-section.error h4 {
+  color: #dc3545;
+}
+
+.code-block {
+  background: rgba(0,0,0,0.4);
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ============ TOKEN & COST TRACKING ============ */
+
+.cost-badge {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.token-stats {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+.token-stats span {
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.token-info {
+  margin-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #17a2b8;
+  color: #17a2b8;
+}
+
+.btn-outline:hover {
+  background: #17a2b8;
+  color: white;
+}
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 1200px) {
+  .App {
+    padding: 15px 20px;
+  }
+  
+  .workflow-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 10px 15px;
+  }
+  
+  .App-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .App-header .subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .App-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .App-nav button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .builder-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .builder-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .viewer-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .execution-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .token-stats {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .execution-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .workflow-actions {
+    flex-direction: column;
+  }
+  
+  .step-header {
+    flex-wrap: wrap;
+  }
+}
