@@ -3,12 +3,17 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# Check for Railway environment vs local
-# Railway sets RAILWAY_ENVIRONMENT or we can check for DATABASE_URL or PORT
-IS_RAILWAY = os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("PORT") or os.getenv("DATABASE_URL")
+# Check for Railway environment
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-if IS_RAILWAY:
-    # Railway: Use SQLite
+if DATABASE_URL:
+    # Railway with PostgreSQL
+    # Railway provides postgres:// but SQLAlchemy needs postgresql://
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+elif os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("PORT"):
+    # Railway without DATABASE_URL: Use SQLite
     DATABASE_URL = "sqlite:///./workflows.db"
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 else:
