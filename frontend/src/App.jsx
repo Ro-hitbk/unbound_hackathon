@@ -96,8 +96,8 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>🤖 Agentic Workflow Builder</h1>
-        <p className="subtitle">Chain AI agents together to automate complex tasks</p>
+        <h1>🔄 Veriflow</h1>
+        <p className="subtitle">Agentic Workflow Builder - Chain AI agents to automate complex tasks</p>
       </header>
       
       <nav className="App-nav">
