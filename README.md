@@ -2,6 +2,11 @@
 
 An agentic workflow builder that chains AI agents together to automate complex multi-step tasks. Built for the Unbound Hackathon.
 
+![Veriflow](https://img.shields.io/badge/Veriflow-Agentic%20Workflows-blue)
+![Python](https://img.shields.io/badge/Python-3.11+-green)
+![React](https://img.shields.io/badge/React-19-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Latest-teal)
+
 ## ✨ Features
 
 ### Core Features
@@ -24,15 +29,20 @@ An agentic workflow builder that chains AI agents together to automate complex m
 ## 🛠️ Tech Stack
 
 ### Backend
-- **FastAPI** - Modern Python web framework
-- **SQLAlchemy** - ORM for database operations
-- **MySQL** (local) / **SQLite** (production) - Database
-- **Unbound API** - LLM integration
+| Technology | Purpose |
+|------------|---------|
+| **FastAPI** | Modern Python web framework |
+| **SQLAlchemy** | ORM for database operations |
+| **MySQL / SQLite** | Database (MySQL local, SQLite production) |
+| **Unbound API** | LLM integration |
+| **Pydantic** | Data validation |
 
 ### Frontend
-- **React 19** - UI library
-- **Vite** - Build tool and dev server
-- **Axios** - HTTP client
+| Technology | Purpose |
+|------------|---------|
+| **React 19** | UI library |
+| **Vite** | Build tool and dev server |
+| **Axios** | HTTP client |
 
 ## 🚀 Quick Start
 
@@ -70,14 +80,20 @@ npm install
 npm run dev
 ```
 
+Open http://localhost:5173 in your browser.
+
 ### Environment Variables
 
 **Backend** (optional - has defaults for local dev):
-- `DATABASE_URL` - Database connection string
-- `UNBOUND_API_KEY` - Your Unbound API key
+| Variable | Description |
+|----------|-------------|
+| `DATABASE_URL` | Database connection string |
+| `UNBOUND_API_KEY` | Your Unbound API key |
 
 **Frontend** (optional - defaults to localhost:8000):
-- `VITE_API_URL` - Backend API URL
+| Variable | Description |
+|----------|-------------|
+| `VITE_API_URL` | Backend API URL |
 
 ## 📖 Usage
 
@@ -87,42 +103,60 @@ npm run dev
 4. **Monitor** - Watch each step execute and view results
 5. **Export** - Save workflows as JSON to share or backup
 
+### Example Workflow: Blog Post Pipeline
+
+```
+Step 1: Generate Outline
+  Prompt: "Create an outline for a blog post about {topic}"
+  Criteria: "Must have at least 5 sections"
+
+Step 2: Write Introduction  
+  Prompt: "Write an engaging introduction based on this outline"
+  Criteria: "Must be 100-200 words"
+
+Step 3: Polish & Edit
+  Prompt: "Improve the writing quality and fix any issues"
+  Criteria: "Must be professional and error-free"
+```
+
 ## 🏗️ Project Structure
 
 ```
 ├── backend/
 │   ├── app/
-│   │   ├── main.py           # FastAPI routes
-│   │   ├── models.py         # SQLAlchemy models
-│   │   ├── schemas.py        # Pydantic schemas
-│   │   ├── database.py       # Database config
-│   │   ├── unbound_client.py # Unbound API client
+│   │   ├── main.py              # FastAPI routes
+│   │   ├── models.py            # SQLAlchemy models
+│   │   ├── schemas.py           # Pydantic schemas
+│   │   ├── database.py          # Database config
+│   │   ├── unbound_client.py    # Unbound API client
 │   │   ├── workflow_executor.py # Execution engine
 │   │   └── criteria_checker.py  # Criteria evaluation
 │   ├── requirements.txt
-│   └── nixpacks.toml         # Railway config
+│   └── nixpacks.toml            # Railway config
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx           # Main app component
-│   │   ├── api.js            # API client
+│   │   ├── App.jsx              # Main app component
+│   │   ├── api.js               # API client
 │   │   └── components/
 │   │       ├── WorkflowList.jsx
 │   │       ├── WorkflowBuilder.jsx
 │   │       ├── StepEditor.jsx
 │   │       └── ExecutionViewer.jsx
 │   ├── package.json
-│   └── nixpacks.toml         # Railway config
+│   └── nixpacks.toml            # Railway config
+│
+└── README.md
 ```
 
 ## 🌐 Deployment (Railway)
 
 1. Push code to GitHub
 2. Create Railway project → Deploy from GitHub
-3. Add **Backend** service (Root: `backend`)
+3. Add **Backend** service (Root Directory: `backend`)
    - Set `DATABASE_URL=sqlite` 
    - Set `UNBOUND_API_KEY=your_key`
-4. Add **Frontend** service (Root: `frontend`)
+4. Add **Frontend** service (Root Directory: `frontend`)
    - Set `VITE_API_URL=https://your-backend-url.railway.app`
 
 ## 📝 API Endpoints
@@ -134,7 +168,9 @@ npm run dev
 | GET | `/workflows/{id}` | Get workflow details |
 | PUT | `/workflows/{id}` | Update workflow |
 | DELETE | `/workflows/{id}` | Delete workflow |
-| POST | `/workflows/{id}/steps/` | Add step |
+| POST | `/workflows/{id}/steps/` | Add step to workflow |
+| PUT | `/steps/{id}` | Update step |
+| DELETE | `/steps/{id}` | Delete step |
 | POST | `/workflows/{id}/execute` | Execute workflow |
 | GET | `/workflows/{id}/export` | Export as JSON |
 | POST | `/workflows/import` | Import from JSON |
@@ -143,15 +179,30 @@ npm run dev
 
 ## 🎯 Hackathon Requirements
 
-- ✅ Multi-step workflow builder
-- ✅ LLM step configuration (prompt, model, params)
+### Basic Requirements ✅
+- ✅ Multi-step workflow builder UI
+- ✅ LLM step configuration (prompt, model, parameters)
 - ✅ Completion criteria per step
 - ✅ Workflow execution engine
 - ✅ Context passing between steps
-- ✅ **Bonus:** Cost tracking
-- ✅ **Bonus:** Workflow export/import
-- ✅ **Bonus:** Auto model selection
+
+### Bonus Challenges ✅
+- ✅ **Cost Tracking** - Token usage and cost per step/execution
+- ✅ **Workflow Export/Import** - Save and share workflows as JSON
+- ✅ **Auto Model Selection** - Picks best model based on task type
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
 MIT License - Built for Unbound Hackathon 2026
+
+---
+
+**Built with ❤️ for the Unbound Hackathon**
