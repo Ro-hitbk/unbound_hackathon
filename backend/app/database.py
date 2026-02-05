@@ -9,6 +9,10 @@ DATABASE_URL = os.getenv(
     "mysql+pymysql://root:mascaradancer@localhost:3306/unbounddb"
 )
 
+# Railway provides mysql:// but SQLAlchemy needs mysql+pymysql://
+if DATABASE_URL.startswith("mysql://"):
+    DATABASE_URL = DATABASE_URL.replace("mysql://", "mysql+pymysql://", 1)
+
 engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True,
