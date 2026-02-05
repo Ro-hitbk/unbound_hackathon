@@ -7,6 +7,15 @@ An agentic workflow builder that chains AI agents together to automate complex m
 ![React](https://img.shields.io/badge/React-19-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-teal)
 
+## 🌐 Live Demo
+
+| Service           | URL                                                                                                                        |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **🎬 Demo Video** | [https://www.loom.com/share/4e788cbfcd0b4b68949d73be496b45c6](https://www.loom.com/share/4e788cbfcd0b4b68949d73be496b45c6) |
+| **Frontend**      | [https://veriflowunbound.vercel.app](https://veriflowunbound.vercel.app)                                                   |
+| **Backend API**   | [https://backend-production-5f721.up.railway.app](https://backend-production-5f721.up.railway.app)                         |
+| **GitHub**        | [https://github.com/Ro-hitbk/unbound_hackathon](https://github.com/Ro-hitbk/unbound_hackathon)                             |
+
 ## ✨ Features
 
 ### Core Features
@@ -155,15 +164,29 @@ Step 3: Polish & Edit
 └── README.md
 ```
 
-## 🌐 Deployment (Railway)
+## 🌐 Deployment
+
+### Live Deployment
+
+- **Frontend**: Deployed on Vercel
+- **Backend**: Deployed on Railway with SQLite
+
+### Deploy Your Own
+
+#### Backend (Railway)
 
 1. Push code to GitHub
 2. Create Railway project → Deploy from GitHub
-3. Add **Backend** service (Root Directory: `backend`)
-   - Set `DATABASE_URL=sqlite`
-   - Set `UNBOUND_API_KEY=your_key`
-4. Add **Frontend** service (Root Directory: `frontend`)
-   - Set `VITE_API_URL=https://your-backend-url.railway.app`
+3. Set Root Directory: `backend`
+4. Add environment variable: `UNBOUND_API_KEY=your_key`
+5. Generate public domain
+
+#### Frontend (Vercel)
+
+1. Import GitHub repo to Vercel
+2. Set Root Directory: `frontend`
+3. Add environment variable: `VITE_API_URL=https://your-backend.railway.app`
+4. Deploy
 
 ## 📝 API Endpoints
 
