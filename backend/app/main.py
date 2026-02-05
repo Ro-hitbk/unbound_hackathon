@@ -10,20 +10,22 @@ from .database import engine, SessionLocal
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Agentic Workflow Builder API")
+app = FastAPI(title="Veriflow - Agentic Workflow Builder API")
 
-origins = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-]
-
+# Allow all origins for Railway deployment
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/")
+def root():
+    """Health check endpoint"""
+    return {"status": "ok", "service": "Veriflow API"}
 
 
 def get_db():
