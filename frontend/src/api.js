@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Use VITE_API_URL env var if set (production), otherwise use local
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 const api = axios.create({
-  baseURL: 'http://localhost:8000', 
+  baseURL: API_URL, 
 });
 
 // ============ WORKFLOW API ============

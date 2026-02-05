@@ -1,16 +1,12 @@
 # app/database.py
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-MYSQL_USER = "root"
-MYSQL_PASSWORD = "mascaradancer"
-MYSQL_HOST = "localhost"
-MYSQL_PORT = 3306
-MYSQL_DB = "unbounddb"
-
-DATABASE_URL = (
-    f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
-    f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}"
+# Use DATABASE_URL env var if set (Railway), otherwise use local defaults
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "mysql+pymysql://root:mascaradancer@localhost:3306/unbounddb"
 )
 
 engine = create_engine(
