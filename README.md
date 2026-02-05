@@ -42,12 +42,13 @@ An agentic workflow builder that chains AI agents together to automate complex m
 
 ### Backend
 
-| Technology         | Purpose                                   |
-| ------------------ | ----------------------------------------- |
-| **FastAPI**        | Modern Python web framework               |
-| **SQLAlchemy**     | ORM for database operations               |
-| **MySQL / SQLite** | Database (MySQL local, SQLite production) |
-| **Unbound API**    | LLM integration                           |
+| Technology         | Purpose                                      |
+| ------------------ | -------------------------------------------- |
+| **FastAPI**        | Modern Python web framework                  |
+| **SQLAlchemy**     | ORM for database operations                  |
+| **PostgreSQL**     | Production database (Railway)                |
+| **MySQL**          | Local development database                   |
+| **Unbound API**    | LLM integration                              |
 | **Pydantic**       | Data validation                           |
 
 ### Frontend
