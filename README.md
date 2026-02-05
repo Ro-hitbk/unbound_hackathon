@@ -10,6 +10,7 @@ An agentic workflow builder that chains AI agents together to automate complex m
 ## ✨ Features
 
 ### Core Features
+
 - **Multi-Step Workflows** - Create workflows with multiple LLM-powered steps
 - **Context Passing** - Output from each step flows to the next as context
 - **Completion Criteria** - Define success criteria that the AI evaluates
@@ -17,11 +18,13 @@ An agentic workflow builder that chains AI agents together to automate complex m
 - **Real-time Execution** - Watch your workflow execute step by step
 
 ### Bonus Features
+
 - **💰 Cost Tracking** - Track token usage and estimated costs per step/execution
 - **📥 Export/Import** - Save and share workflows as JSON files
 - **🤖 Auto Model Selection** - Automatically picks the best model based on task type
 
 ### Additional Features
+
 - **🔄 Retry Logic** - Automatic retry with exponential backoff for network reliability
 - **📊 Token Usage Display** - See prompt/completion tokens per step
 - **📱 Responsive Design** - Works on desktop and mobile
@@ -29,24 +32,27 @@ An agentic workflow builder that chains AI agents together to automate complex m
 ## 🛠️ Tech Stack
 
 ### Backend
-| Technology | Purpose |
-|------------|---------|
-| **FastAPI** | Modern Python web framework |
-| **SQLAlchemy** | ORM for database operations |
+
+| Technology         | Purpose                                   |
+| ------------------ | ----------------------------------------- |
+| **FastAPI**        | Modern Python web framework               |
+| **SQLAlchemy**     | ORM for database operations               |
 | **MySQL / SQLite** | Database (MySQL local, SQLite production) |
-| **Unbound API** | LLM integration |
-| **Pydantic** | Data validation |
+| **Unbound API**    | LLM integration                           |
+| **Pydantic**       | Data validation                           |
 
 ### Frontend
-| Technology | Purpose |
-|------------|---------|
-| **React 19** | UI library |
-| **Vite** | Build tool and dev server |
-| **Axios** | HTTP client |
+
+| Technology   | Purpose                   |
+| ------------ | ------------------------- |
+| **React 19** | UI library                |
+| **Vite**     | Build tool and dev server |
+| **Axios**    | HTTP client               |
 
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Python 3.11+
 - Node.js 18+
 - MySQL (for local development)
@@ -110,7 +116,7 @@ Step 1: Generate Outline
   Prompt: "Create an outline for a blog post about {topic}"
   Criteria: "Must have at least 5 sections"
 
-Step 2: Write Introduction  
+Step 2: Write Introduction
   Prompt: "Write an engaging introduction based on this outline"
   Criteria: "Must be 100-200 words"
 
@@ -154,32 +160,33 @@ Step 3: Polish & Edit
 1. Push code to GitHub
 2. Create Railway project → Deploy from GitHub
 3. Add **Backend** service (Root Directory: `backend`)
-   - Set `DATABASE_URL=sqlite` 
+   - Set `DATABASE_URL=sqlite`
    - Set `UNBOUND_API_KEY=your_key`
 4. Add **Frontend** service (Root Directory: `frontend`)
    - Set `VITE_API_URL=https://your-backend-url.railway.app`
 
 ## 📝 API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/workflows/` | List all workflows |
-| POST | `/workflows/` | Create workflow |
-| GET | `/workflows/{id}` | Get workflow details |
-| PUT | `/workflows/{id}` | Update workflow |
-| DELETE | `/workflows/{id}` | Delete workflow |
-| POST | `/workflows/{id}/steps/` | Add step to workflow |
-| PUT | `/steps/{id}` | Update step |
-| DELETE | `/steps/{id}` | Delete step |
-| POST | `/workflows/{id}/execute` | Execute workflow |
-| GET | `/workflows/{id}/export` | Export as JSON |
-| POST | `/workflows/import` | Import from JSON |
-| GET | `/executions/{id}` | Get execution details |
-| GET | `/models/` | List available models |
+| Method | Endpoint                  | Description           |
+| ------ | ------------------------- | --------------------- |
+| GET    | `/workflows/`             | List all workflows    |
+| POST   | `/workflows/`             | Create workflow       |
+| GET    | `/workflows/{id}`         | Get workflow details  |
+| PUT    | `/workflows/{id}`         | Update workflow       |
+| DELETE | `/workflows/{id}`         | Delete workflow       |
+| POST   | `/workflows/{id}/steps/`  | Add step to workflow  |
+| PUT    | `/steps/{id}`             | Update step           |
+| DELETE | `/steps/{id}`             | Delete step           |
+| POST   | `/workflows/{id}/execute` | Execute workflow      |
+| GET    | `/workflows/{id}/export`  | Export as JSON        |
+| POST   | `/workflows/import`       | Import from JSON      |
+| GET    | `/executions/{id}`        | Get execution details |
+| GET    | `/models/`                | List available models |
 
 ## 🎯 Hackathon Requirements
 
 ### Basic Requirements ✅
+
 - ✅ Multi-step workflow builder UI
 - ✅ LLM step configuration (prompt, model, parameters)
 - ✅ Completion criteria per step
@@ -187,6 +194,7 @@ Step 3: Polish & Edit
 - ✅ Context passing between steps
 
 ### Bonus Challenges ✅
+
 - ✅ **Cost Tracking** - Token usage and cost per step/execution
 - ✅ **Workflow Export/Import** - Save and share workflows as JSON
 - ✅ **Auto Model Selection** - Picks best model based on task type
